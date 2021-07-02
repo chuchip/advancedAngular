@@ -1,4 +1,4 @@
-export class Person
+export class PersonInputDto
 {
     constructor (
         public user: string,
