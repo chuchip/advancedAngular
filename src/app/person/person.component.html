@@ -1,10 +1,41 @@
  <h1>Mantenimiento Personas</h1>
  <form [formGroup]="form">
-    <mat-form-field class="example-full-width" appearance="fill">
-        <label>User</label>
-        <input matInput placeholder="User" formControlName="user">
+    <mat-form-field class="half-width" appearance="outline">        
+        <input matInput [type]="'text'" placeholder="User" formControlName="user">
+    </mat-form-field>
+    <mat-form-field class="half-width" appearance="outline">        
+        <input matInput [type]="'password'"  placeholder="Password" formControlName="password">
+    </mat-form-field>
+    <mat-form-field class="half-width" appearance="outline">
+        <input matInput  [type]="'text'" placeholder="name" formControlName="name">
+    </mat-form-field>
+    <mat-form-field class="half-width" appearance="outline">
+        <mat-label>Surname</mat-label>
+        <input matInput matInput [type]="'text'" placeholder="surname" formControlName="surname">
+    </mat-form-field>
+    <mat-form-field class="half-width" appearance="fill">
+        <mat-label>Company Email</mat-label>
+        <input matInput  [type]="'text'" placeholder="company email" formControlName="company_email">
     </mat-form-field>
   
+    <mat-form-field class="half-width" appearance="fill">
+        <mat-label>Personal Email</mat-label>
+        <input matInput  [type]="'text'" placeholder="personal email" formControlName="personal_email">
+    </mat-form-field>
+    <mat-form-field class="half-width" appearance="fill">
+        <mat-label>City</mat-label>
+        <input matInput  [type]="'text'" placeholder="city" formControlName="city">
+    </mat-form-field>
+<!--
+    name: string;
+    surname: string;
+    company_email: string;
+    personal_email: string;
+    city: string;
+    active: boolean;
+    created_date: Date;
+    termination_date?: Date;
+    -->
 </form>
 
 <div> {{form.value.user}} </div>

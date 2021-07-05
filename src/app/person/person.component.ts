@@ -3,6 +3,7 @@ import { PersonInputDto } from './dto/input/PersonInputDto';
 import { AbstractControl, FormBuilder, FormGroup,ValidationErrors,ValidatorFn,Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 
+
 export function forbiddenNameValidator(nameRe: RegExp): ValidatorFn {
   return (control: AbstractControl): ValidationErrors | null => {
     const forbidden = nameRe.test(control.value);
@@ -23,7 +24,7 @@ export function forbiddenNameValidator(nameRe: RegExp): ValidatorFn {
 export class PersonComponent {
 
   public texto: string = "Hola";
-  public personInputDto: PersonInputDto = {
+  public personInputDto: PersonInputDto = {   
    user: "chuchi",
    password: "",
    name: "",
@@ -41,9 +42,7 @@ export class PersonComponent {
     private _route: ActivatedRoute,
     private _fb: FormBuilder
   ) {
-    this.form = this._fb.group({
-      user: [this.personInputDto.user,[Validators.required,forbiddenNameValidator(/bob/i)]]
-    });
+    this.form = this._fb.group(this.personInputDto);
    }
 
 
