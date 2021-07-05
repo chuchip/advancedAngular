@@ -1,1 +1,13 @@
-<p>person works!</p>
+ <h1>Mantenimiento Personas</h1>
+ <form [formGroup]="form">
+    <mat-form-field class="example-full-width" appearance="fill">
+        <label>User</label>
+        <input matInput placeholder="User" formControlName="user">
+    </mat-form-field>
+  
+</form>
+
+<div> {{form.value.user}} </div>
+
+<div>{{ personInputDto | json }}</div>
+
