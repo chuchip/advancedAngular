@@ -3,6 +3,7 @@ import { PersonInputDto } from './dto/input/PersonInputDto';
 import { AbstractControl, FormBuilder, FormGroup,ValidationErrors,ValidatorFn,Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { PersonService } from './services/person.service';
+import { PersonOutputDto } from './dto/output/PersonOutputDto';
 
 
 export function forbiddenNameValidator(nameRe: RegExp): ValidatorFn {
@@ -25,7 +26,8 @@ export function forbiddenNameValidator(nameRe: RegExp): ValidatorFn {
 export class PersonComponent {
 
   public texto: string = "Hola";
-  public personInputDto: PersonInputDto = {   
+  id_user?: number;
+  public personOutputDto: PersonOutputDto = {   
    user: "chuchi",
    password: "",
    name: "",
@@ -44,7 +46,7 @@ export class PersonComponent {
     private _fb: FormBuilder,
     private personService: PersonService
   ) {
-    this.form = this._fb.group(this.personInputDto);
+    this.form = this._fb.group(this.personOutputDto);
    }
 
 
@@ -52,11 +54,12 @@ export class PersonComponent {
   {
     console.log("En onsubmit");
     this.personService.addPerson(this.form.value).subscribe( 
-      resp => {
-        console.log("Todo fue bien");
+      datos => {
+        console.log(`Insertado registro con ID: ${datos.user}`);
+        this.id_user=datos.id;
       },
       error => {
-      console.log("Error: "+ error.error.mensaje);
+      console.log(`Error: ${error.error.mensaje}`);
       } );
   }
   

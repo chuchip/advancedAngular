@@ -1,6 +1,10 @@
  <h1>Mantenimiento Personas</h1>
 <section>
     <form [formGroup]="form"  (ngSubmit)="onSubmit()" >
+        <span class="id half-width">
+             <label>Id: {{id_user}}</label>
+        </span>           
+       
         <mat-form-field class="half-width" appearance="outline">        
             <input matInput [type]="'text'" placeholder="User" formControlName="user">
         </mat-form-field>
@@ -54,5 +58,5 @@
 </section>
 <div> {{form.value.user}} </div>
 
-<div>{{ personInputDto | json }}</div>
+
 
