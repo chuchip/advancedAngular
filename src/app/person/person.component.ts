@@ -2,6 +2,7 @@ import { Component, NgModule, OnInit } from '@angular/core';
 import { PersonInputDto } from './dto/input/PersonInputDto';
 import { AbstractControl, FormBuilder, FormGroup,ValidationErrors,ValidatorFn,Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
+import { PersonService } from './services/person.service';
 
 
 export function forbiddenNameValidator(nameRe: RegExp): ValidatorFn {
@@ -40,7 +41,8 @@ export class PersonComponent {
   constructor(
     private _router: Router,
     private _route: ActivatedRoute,
-    private _fb: FormBuilder
+    private _fb: FormBuilder,
+    private personService: PersonService
   ) {
     this.form = this._fb.group(this.personInputDto);
    }
@@ -49,6 +51,13 @@ export class PersonComponent {
   onSubmit()
   {
     console.log("En onsubmit");
+    this.personService.addPerson(this.form.value).subscribe( 
+      resp => {
+        console.log("Todo fue bien");
+      },
+      error => {
+      console.log("Error: "+ error.error.mensaje);
+      } );
   }
   
 }
