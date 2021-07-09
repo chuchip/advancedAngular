@@ -46,9 +46,16 @@ export class PersonComponent {
     private _fb: FormBuilder,
     private personService: PersonService
   ) {
+    personService.clientes$.subscribe(a => this.recibidoEvento(a));
+    //personService.observable.subscribe(a => this.recibidoEvento(a));
     this.form = this._fb.group(this.personOutputDto);
    }
 
+   recibidoEvento(a: any)
+   {
+      console.log(`Recibido Evento: ${a}`);
+      this.form.controls.user.setValue(a);
+   }
 
   onSubmit()
   {

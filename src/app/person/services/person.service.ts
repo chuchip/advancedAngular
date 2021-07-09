@@ -3,12 +3,16 @@ import { Injectable } from '@angular/core';
 import { PersonOutputDto } from '../dto/output/PersonOutputDto';
 import { environment } from '../../../environments/environment';
 import { PersonInputDto } from '../dto/input/PersonInputDto';
+import { Observable, Subject, Subscriber } from 'rxjs';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class PersonService {
+  public clientes$ = new Subject<string>();
+
+  public observable = new Observable<String>();
   
   url:string;
   apiPerson: string ="/person";
@@ -16,6 +20,7 @@ export class PersonService {
   constructor(private _http:HttpClient) { 
     this.url=environment.apiUrl;
     console.log("URL: {{this.url}} " );
+    
   }
  
  // constructor() {} 

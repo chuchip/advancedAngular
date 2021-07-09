@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Hero } from '../hero';
+import { PersonService } from '../person/services/person.service';
 
 @Component({
   selector: 'app-hero-form',
@@ -7,7 +8,7 @@ import { Hero } from '../hero';
   styleUrls: ['./hero-form.component.scss']
 })
 export class HeroFormComponent implements OnInit {
-
+  public evento:string="";
   powers = ['Really Smart', 'Super Flexible',
             'Super Hot', 'Weather Changer'];
 
@@ -17,7 +18,7 @@ export class HeroFormComponent implements OnInit {
 
   onSubmit() { this.submitted = true; }
 
-  constructor() { }
+  constructor(private personService: PersonService) { }
 
   ngOnInit(): void {
   }
@@ -25,4 +26,10 @@ export class HeroFormComponent implements OnInit {
     this.model = new Hero(42, '', '');
   }
 
+  
+  pulsado():void 
+  { 
+    console.log("Creado evento");
+    this.personService.clientes$.next(this.evento);
+  }
 }
