@@ -12,7 +12,7 @@ import { Observable, Subject, Subscriber } from 'rxjs';
 export class PersonService {
   public clientes$ = new Subject<string>();
 
-  public observable = new Observable<String>();
+  //public observable = new Observable<String>();
   
   url:string;
   apiPerson: string ="/person";

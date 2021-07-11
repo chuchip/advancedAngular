@@ -13,6 +13,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import localeEs from '@angular/common/locales/es';
 import { MAT_DATE_FORMATS } from '@angular/material/core';
 import { HttpClientModule } from '@angular/common/http';
+import { ListaPersonasComponent } from './lista-personas/lista-personas.component';
 
 export const DateFormat = {
   parse: {
@@ -32,7 +33,8 @@ export const DateFormat = {
     AppComponent,
     PersonComponent,
     HeroFormComponent,
-    HomeComponent
+    HomeComponent,
+    ListaPersonasComponent
   ],
   imports: [
     BrowserModule,
