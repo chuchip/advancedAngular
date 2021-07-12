@@ -1,5 +1,15 @@
 # Estudiantes
 
+Ejemplo de CRUD
+
+Uso de:
+ @INPUT
+ @OUTPUT
+ Angular Material.
+ Observables
+ LocalStorage y SessionStorage
+
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.4.
 
 ## Development server

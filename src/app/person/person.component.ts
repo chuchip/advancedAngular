@@ -49,6 +49,7 @@ export class PersonComponent implements OnDestroy{
     private personService: PersonService
   ) {
     console.log("En constructor person");
+    
     this.subscriptions.add(personService.clientes$.subscribe(evento => this.recibidoEvento(evento)));
     console.log("Person se suscribio");
     //personService.observable.subscribe(a => this.recibidoEvento(a));
