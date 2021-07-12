@@ -5,11 +5,12 @@ import { environment } from '../../../environments/environment';
 import { PersonInputDto } from '../dto/input/PersonInputDto';
 
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class PersonService {
-  
+  contador: number=0;
   url:string;
   apiPerson: string ="/person";
 

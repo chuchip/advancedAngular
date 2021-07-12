@@ -52,6 +52,7 @@ export class PersonComponent {
 
   onSubmit()
   {
+    this.personService.contador++;
     console.log("En onsubmit");
     this.personService.addPerson(this.form.value).subscribe( 
       datos => {
