@@ -30,6 +30,7 @@ export class HeroFormComponent implements OnInit {
   pulsado():void 
   { 
     console.log("Creado evento");
+    
     this.personService.clientes$.next(this.evento);
   }
 }

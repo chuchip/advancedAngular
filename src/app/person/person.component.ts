@@ -55,13 +55,8 @@ export class PersonComponent implements OnDestroy{
     //personService.observable.subscribe(a => this.recibidoEvento(a));
     this.form = this._fb.group(this.personOutputDto);
    }
-  ngOnDestroy(): void {
-     try {
-       this.subscriptions.unsubscribe();
-     } catch (error)
-     {
-       console.log(error);
-     }
+  ngOnDestroy(): void {    
+     this.subscriptions.unsubscribe();
      console.log("Person anulo la suscripcion");
   }
 
