@@ -14,6 +14,8 @@ import localeEs from '@angular/common/locales/es';
 import { MAT_DATE_FORMATS } from '@angular/material/core';
 import { HttpClientModule } from '@angular/common/http';
 import { ListaPersonasComponent } from './lista-personas/lista-personas.component';
+import { EstudianteComponent } from './estudiante/estudiante.component';
+import { ManualService } from './shared/services/manual.service';
 
 export const DateFormat = {
   parse: {
@@ -34,7 +36,8 @@ export const DateFormat = {
     PersonComponent,
     HeroFormComponent,
     HomeComponent,
-    ListaPersonasComponent
+    ListaPersonasComponent,
+    EstudianteComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +49,7 @@ export const DateFormat = {
     BrowserAnimationsModule,    
     HttpClientModule
   ],
-  providers: [   { provide: LOCALE_ID, useValue: 'es' }, { provide: MAT_DATE_FORMATS, useValue: DateFormat } ],
+  providers: [  { provide: LOCALE_ID, useValue: 'es' }, { provide: MAT_DATE_FORMATS, useValue: DateFormat } ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

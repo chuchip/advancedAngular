@@ -5,6 +5,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { PersonService } from './services/person.service';
 import { PersonOutputDto } from './dto/output/PersonOutputDto';
 import { Subscription } from 'rxjs';
+import { ComunServiceService } from '../shared/services/comun-service.service';
 
 
 export function forbiddenNameValidator(nameRe: RegExp): ValidatorFn {
@@ -43,6 +44,7 @@ export class PersonComponent implements OnDestroy{
   form: FormGroup;
  
   constructor(
+    private comunservice:ComunServiceService,
     private _router: Router,
     private _route: ActivatedRoute,
     private _fb: FormBuilder,

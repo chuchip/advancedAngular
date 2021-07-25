@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { environment } from '../environments/environment';
+import { ManualService } from './shared/services/manual.service';
 
 @Component({
   selector: 'app-root',
