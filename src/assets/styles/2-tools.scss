@@ -1,0 +1,9 @@
+/* Mixins y Funciones (solo si usamos preprocesadores) */
+
+// https://www.carloscaballero.io/understanding-itcss-real-case-using-itcss-https-carloscaballero-io/
+@mixin flex($direction:row, $break:nowrap, $alignWidth:center, $alignHeight:center) {
+    display: flex;
+    flex-flow: $direction $break;
+    justify-content: $alignWidth;
+    align-items: $alignHeight;
+}

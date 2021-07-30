@@ -15,7 +15,7 @@ export class PersonService {
   //public observable = new Observable<String>();
   
   url:string;
-  apiPerson: string ="/person";
+  apiPerson: string ="/persona";
 
   constructor(private _http:HttpClient) { 
     this.url=environment.apiUrl;
@@ -28,5 +28,9 @@ export class PersonService {
   {
     console.log(`Llamando a ${this.url} ${this.apiPerson}  Name: ${person.name}` );
     return this._http.post<PersonInputDto>(this.url+this.apiPerson,person);
+  }
+  getAllPersons()
+  {
+    return this._http.get<PersonInputDto>(this.url+this.apiPerson);
   }
 }
