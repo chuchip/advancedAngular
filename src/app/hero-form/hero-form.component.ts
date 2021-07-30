@@ -8,7 +8,7 @@ import { PersonService } from '../person/services/person.service';
   styleUrls: ['./hero-form.component.scss']
 })
 export class HeroFormComponent implements OnInit {
-
+  public evento:string="";
   powers = ['Really Smart', 'Super Flexible',
             'Super Hot', 'Weather Changer'];
 
@@ -18,9 +18,7 @@ export class HeroFormComponent implements OnInit {
 
   onSubmit() { this.submitted = true; }
 
-  constructor(public p: PersonService) { 
-
-  }
+  constructor(private personService: PersonService) { }
 
   ngOnInit(): void {
   }
@@ -28,4 +26,10 @@ export class HeroFormComponent implements OnInit {
     this.model = new Hero(42, '', '');
   }
 
+  
+  pulsado():void 
+  { 
+    console.log("Creado evento");
+    this.personService.clientes$.next(this.evento);
+  }
 }

@@ -4,6 +4,7 @@ import { AbstractControl, FormBuilder, FormGroup,ValidationErrors,ValidatorFn,Va
 import { Router, ActivatedRoute } from '@angular/router';
 import { PersonService } from './services/person.service';
 import { PersonOutputDto } from './dto/output/PersonOutputDto';
+import { Subscriber } from 'rxjs';
 
 
 export function forbiddenNameValidator(nameRe: RegExp): ValidatorFn {
@@ -46,13 +47,24 @@ export class PersonComponent {
     private _fb: FormBuilder,
     private personService: PersonService
   ) {
+    i: Subscriber;
+    
+     personService.clientes$.subscribe(a => this.recibidoEvento(a));
+    //personService.observable.subscribe(a => this.recibidoEvento(a));
     this.form = this._fb.group(this.personOutputDto);
    }
 
+   recibidoEvento(a: any)
+   {
+      console.log(`Recibido Evento: ${a}`);
+      this.form.controls.user.setValue(a);
+   }
 
   onSubmit()
   {
-    this.personService.contador++;
+    localStorage.setItem("pepe","Hola pepe");+
+    sessionStorage.setItem("xxx","hola");
+    
     console.log("En onsubmit");
     this.personService.addPerson(this.form.value).subscribe( 
       datos => {
