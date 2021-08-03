@@ -1,5 +1,9 @@
 <div>
     <h1 class="persons__title">Persons List</h1>
     <div class="persons__navbar"><button mat-raised-button color="primary" [routerLink]="['/person', '0']">Add Person</button></div>
-    
+    <div class="container">
+    <span class="item" *ngFor="let item of arraySeasons">              
+            {{item}}      
+    </span> 
+    </div>
 </div>
