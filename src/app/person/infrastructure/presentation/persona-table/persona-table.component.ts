@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { PersonInputDto } from 'src/app/person/dto/input/PersonInputDto';
 import { PersonService } from 'src/app/person/services/person.service';
 
 @Component({
@@ -9,7 +10,8 @@ import { PersonService } from 'src/app/person/services/person.service';
 })
 export class PersonaTableComponent implements OnInit {
 
-  public seasons = {
+  seasons = {
+    id: "ID",
     user: "USER",
     password: "PASSWORD",
     name: "NAME",
@@ -22,6 +24,8 @@ export class PersonaTableComponent implements OnInit {
     createdAt: "CREATE DATE",
     updatedAt: "UPDATE DATE"
   }
+  public personas:PersonInputDto[] = [];
+
   public arraySeasons:string[] =[];
 
   constructor( private _router: Router,
@@ -31,12 +35,15 @@ export class PersonaTableComponent implements OnInit {
 
   ngOnInit(): void {
     this._personService.getAllPersons().subscribe( r => console.log(r));
-    for (var str in this.seasons)
-    {      
-      this.arraySeasons.push(this.seasons[str]);
-      
+    Object.entries(this.seasons).forEach(([key, value]) => {      
+      this.arraySeasons.push(value);      
+    });
+    this._personService.getAllPersons().subscribe( 
+      data => {  console.log(data);
+        this.personas=data} ,
+      error => console.log(error));
     }
-  }
+   
 
   
 }

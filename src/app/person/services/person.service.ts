@@ -4,7 +4,7 @@ import { PersonOutputDto } from '../dto/output/PersonOutputDto';
 import { environment } from '../../../environments/environment';
 import { PersonInputDto } from '../dto/input/PersonInputDto';
 import { Observable, Subject, Subscriber } from 'rxjs';
-
+import { catchError, map, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +15,7 @@ export class PersonService {
   //public observable = new Observable<String>();
   
   url:string;
-  apiPerson: string ="/persona";
+  apiPerson: string ="persona";
 
   constructor(private _http:HttpClient) { 
     this.url=environment.apiUrl;
@@ -31,6 +31,6 @@ export class PersonService {
   }
   getAllPersons()
   {
-    return this._http.get<PersonInputDto>(this.url+this.apiPerson);
+    return this._http.get<PersonInputDto[]>(this.url+this.apiPerson);
   }
 }
