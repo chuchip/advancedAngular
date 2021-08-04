@@ -27,6 +27,8 @@ export class PersonaTableComponent implements OnInit {
   public personas:PersonInputDto[] = [];
 
   public arraySeasons:string[] =[];
+  public errorDb:boolean=false;
+  public msgErrorDb:string="";
 
   constructor( private _router: Router,
     private _route: ActivatedRoute, public _personService:PersonService) { 
@@ -41,10 +43,13 @@ export class PersonaTableComponent implements OnInit {
     this._personService.getAllPersons().subscribe( 
       data => {  console.log(data);
         this.personas=data} ,
-      error => console.log(error));
+      error => 
+      {
+        this.errorDb=true;
+        this.msgErrorDb=error.error;
+      });
     }
    
-
   
 }
  

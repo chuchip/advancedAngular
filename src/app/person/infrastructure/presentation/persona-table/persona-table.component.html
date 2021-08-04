@@ -7,11 +7,11 @@
                 {{item}}      
         </span> 
     </div>
-
+ 
     <div class="tabla" *ngFor="let item of personas" >
 
         <div class="item" >
-           <a href="/person/{{item.id_persona}}">{{item.id_persona}} </a>
+        <a href="/person/{{item.id_persona}}">{{item.id_persona}} </a>
         </div>   
         <div class="item">
             {{item.user}}
@@ -47,5 +47,9 @@
             {{item.updatedAt}}
         </div>  
     </div>
-
+    
 </div>
+
+<h2 *ngIf=errorDb>
+    Error al leer la base de datos {{msgErrorDb}}
+</h2>
