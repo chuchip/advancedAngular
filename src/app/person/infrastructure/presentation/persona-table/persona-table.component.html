@@ -1,55 +1,54 @@
-
 <h1 class="persons__title">Persons List</h1>
-<div class="persons__navbar"><button mat-raised-button color="primary" [routerLink]="['/person', '0']">Add Person</button></div>
+<div class="persons__navbar"><button mat-raised-button color="primary" [routerLink]="['/person', '0']">Add
+        Person</button>
+</div>
 <div class="container">
     <div class="tabla">
-        <span class="cabecera" *ngFor="let item of arraySeasons">              
-                {{item}}      
-        </span> 
+        <span class="cabecera" *ngFor="let item of arraySeasons">
+            {{item}}
+        </span>
+        <ng-container *ngIf="!errorDb  else errordb">
+            <ng-container *ngFor="let item of personas">
+                <div class="item">
+                    <a href="/person/{{item.id_persona}}">{{item.id_persona}} </a>
+                </div>
+                <div class="item">
+                    {{item.user}}
+                </div>
+                <div class="item">
+                    {{item.password}}
+                </div>
+                <div class="item">
+                    {{item.name}}
+                </div>
+                <div class="item">
+                    {{item.surname}}
+                </div>
+                <div class="item">
+                    {{item.company_email}}
+                </div>
+                <div class="item">
+                    {{item.personal_email}}
+                </div>
+                <div class="item">
+                    {{item.city}}
+                </div>
+                <div class="item">
+                    {{item.active}}
+                </div>
+                <div class="item">
+                    {{item.termination_date}}
+                </div>
+                <div class="item">
+                    {{item.createdAt}}
+                </div>
+                <div class="item">
+                    {{item.updatedAt}}
+                </div>
+            </ng-container>
+        </ng-container>
     </div>
- 
-    <div class="tabla" *ngFor="let item of personas" >
+    <ng-template #errordb>
+        Error al leer la base de datos <br><b>{{msgErrorDb}}</b>
 
-        <div class="item" >
-        <a href="/person/{{item.id_persona}}">{{item.id_persona}} </a>
-        </div>   
-        <div class="item">
-            {{item.user}}
-        </div>
-        <div class="item">
-            {{item.password}}
-        </div> 
-        <div class="item">
-            {{item.name}}
-        </div>         
-        <div class="item">
-            {{item.surname}}
-        </div>    
-        <div class="item">
-            {{item.company_email}}
-        </div>    
-        <div class="item">
-            {{item.personal_email}}
-        </div>    
-        <div class="item">
-            {{item.city}}
-        </div>    
-        <div class="item">
-            {{item.active}}
-        </div>    
-        <div class="item">
-            {{item.termination_date}}
-        </div>  
-        <div class="item">
-            {{item.createdAt}}
-        </div>  
-        <div class="item">
-            {{item.updatedAt}}
-        </div>  
-    </div>
-    
-</div>
-
-<h2 *ngIf=errorDb>
-    Error al leer la base de datos {{msgErrorDb}}
-</h2>
+    </ng-template>

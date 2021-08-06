@@ -8,8 +8,7 @@ export interface PersonDto {
     city: string,
     active: boolean ,
     imagen_url: string,
-    termination_date: Date,
-    // timestamps!
+    termination_date: Date  | null,    
    createdAt: Date,
-   updatedAt: Date
+   updatedAt: Date 
 }

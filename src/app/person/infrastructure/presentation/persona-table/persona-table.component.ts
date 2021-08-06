@@ -36,17 +36,19 @@ export class PersonaTableComponent implements OnInit {
     }
 
   ngOnInit(): void {
-    this._personService.getAllPersons().subscribe( r => console.log(r));
+    
     Object.entries(this.seasons).forEach(([key, value]) => {      
       this.arraySeasons.push(value);      
     });
     this._personService.getAllPersons().subscribe( 
-      data => {  console.log(data);
+      data => { 
         this.personas=data} ,
       error => 
       {
+        console.log("Se produjo un error");
+        console.log(error);
         this.errorDb=true;
-        this.msgErrorDb=error.error;
+        this.msgErrorDb=error.message;
       });
     }
    

@@ -26,11 +26,17 @@ export class PersonService {
  // constructor() {} 
   addPerson(person: PersonOutputDto)
   {
-    console.log(`Llamando a ${this.url} ${this.apiPerson}  Name: ${person.name}` );
+    //console.log(`Llamando a ${this.url} ${this.apiPerson}  Name: ${person.name}` );
     return this._http.post<PersonInputDto>(this.url+this.apiPerson,person);
   }
   getAllPersons()
   {
     return this._http.get<PersonInputDto[]>(this.url+this.apiPerson);
   }
+  findById(id:number)
+  {
+    //console.log(`Buscando ID: ${id}` );
+    return this._http.get<PersonInputDto>(this.url+this.apiPerson+"/"+id+"/id");
+  }
+  
 }

@@ -1,0 +1,90 @@
+<div *ngIf="idActive!=0">
+    <div class="menu">
+        <ul>
+            <li><a href="" (click)=mover(idActive-1,$event)  [ngClass]="{li_menu:true, a_disabled:idActive<=1, a_enabled:idActive>1} ">Anterior </a></li>
+            <li><a href="" (click)=mover(idActive+1,$event) class="li_menu a_enabled"> Siguiente </a></li>
+        </ul>
+    </div>
+</div>  
+<div>&nbsp;</div>
+<div class="formulario">
+<form  class="objeto" [formGroup]="personDetail" >
+    <div>
+        <mat-form-field class="" appearance="fill">
+            <mat-label>Id</mat-label>
+            <input type="text" matInput placeholder="Id"  formControlName="id_persona" readonly >
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field class="" appearance="fill">
+            <mat-label>User</mat-label>
+            <input type="text" matInput placeholder="User" formControlName="user">
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field class="" appearance="fill">
+            <mat-label>Name</mat-label>
+            <input type="text" matInput placeholder="Surname" formControlName="name">
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field class="" appearance="fill">
+            <mat-label>Surname</mat-label>
+            <input type="text" matInput placeholder="Surname" formControlName="surname">
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field class="" appearance="fill">
+            <mat-label>Password</mat-label>
+            <input type="text" matInput placeholder="Password" formControlName="password">
+            <mat-error *ngIf="personDetail.get('password')?.invalid">
+                Password must be at least 8 characters.
+            </mat-error>
+            <mat-error *ngIf="personDetail.get('password')?.invalid">
+                Password is required.
+            </mat-error>
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field class="" appearance="fill">
+            <mat-label>Company Email</mat-label>
+            <input type="email" matInput placeholder="Company Email" formControlName="companyEmail">
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field class="" appearance="fill">
+            <mat-label>Personal Email</mat-label>
+            <input type="email" matInput placeholder="Personal Email" formControlName="personalEmail">
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field class="" appearance="fill">
+            <mat-label>City</mat-label>
+            <input type="text" matInput placeholder="City" formControlName="city">
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-checkbox labelPosition="before" formControlName="active">Active</mat-checkbox>
+    </div>
+    <div>
+        <mat-form-field appearance="fill">
+            <mat-label>Created date: </mat-label>
+            <input matInput [matDatepicker]="createdDate" formControlName="createdDate">
+            <mat-datepicker-toggle matSuffix [for]="createdDate"></mat-datepicker-toggle>
+            <mat-datepicker #createdDate></mat-datepicker>
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field appearance="fill">
+            <mat-label>Termination date:</mat-label>
+            <input matInput [matDatepicker]="terminationDate" formControlName="terminationDate">
+            <mat-datepicker-toggle matSuffix [for]="terminationDate"></mat-datepicker-toggle>
+            <mat-datepicker #terminationDate></mat-datepicker>
+        </mat-form-field>
+    </div>
+    
+    <button [disabled]="personDetail.invalid" type="button" mat-raised-button color="primary" (click)="savePerson()">Save</button>
+    <button type="button" routerLink="/person" mat-raised-button>Cancel</button>
+   
+</form>
+</div>

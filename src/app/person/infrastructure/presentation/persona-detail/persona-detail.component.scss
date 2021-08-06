@@ -1,0 +1,48 @@
+@import "../../../../../assets/styles/1-settings";
+@import "../../../../..//assets/styles/2-tools";
+
+.menu
+{
+    margin: 10px;   
+}
+.formulario
+{
+    display: flex;
+    justify-content: center;
+
+}
+.objeto
+{    
+    padding: 10px;
+    width: 300px;
+    border-radius: 5px;
+    border: 2px dotted gray ;
+}
+ul{    
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333333;
+}   
+li{
+    float: left;
+}
+.li_menu{
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    padding: 16px;
+    
+}
+
+.a_enabled {        
+    color: white;    
+    cursor: pointer;
+}
+
+.a_disabled {    
+    pointer-events: none;
+    color: rgb(119, 114, 114);
+    cursor: default;
+}

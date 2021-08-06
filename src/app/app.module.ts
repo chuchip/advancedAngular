@@ -4,7 +4,6 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeroFormComponent } from './hero-form/hero-form.component';
 import { HomeComponent } from './home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {AngularMaterialModule}  from './shared/angular-material';
@@ -13,7 +12,7 @@ import localeEs from '@angular/common/locales/es';
 import { MAT_DATE_FORMATS } from '@angular/material/core';
 import { HttpClientModule } from '@angular/common/http';
 import { PersonaTableComponent } from './person/infrastructure/presentation/persona-table/persona-table.component';
-import { PesonaDetailComponent } from './person/infrastructure/presentation/pesona-detail/pesona-detail.component';
+import { PersonaDetailComponent } from './person/infrastructure/presentation/persona-detail/persona-detail.component';
 
 export const DateFormat = {
   parse: {
@@ -30,11 +29,10 @@ export const DateFormat = {
  
  @NgModule({
   declarations: [
-    AppComponent,
-    HeroFormComponent,
+    AppComponent,    
     HomeComponent,
     PersonaTableComponent,
-    PesonaDetailComponent
+    PersonaDetailComponent
   ],
   imports: [
     BrowserModule,
