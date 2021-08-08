@@ -1,10 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { PersonInputDto } from '../../../dto/input/PersonInputDto';
+import { PersonInputDto,defaultPersonInputDto } from '../../../dto/input/PersonInputDto';
 import { PersonService } from '../../../services/person.service';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-import { Person } from 'src/app/person/services/Person';
 import { switchMap } from 'rxjs/operators';
+import { PersonOutputDto } from 'src/app/person/dto/output/PersonOutputDto';
 
 @Component({
   selector: 'app-persona-detail',
@@ -13,22 +13,7 @@ import { switchMap } from 'rxjs/operators';
 })
 export class PersonaDetailComponent implements OnInit {
 
-  person: PersonInputDto={
-    id_persona:null,
-    user:"",  
-    password: "",
-    name: "",
-    surname:"",
-    company_email:"",
-    personal_email:"",
-    city: "",
-    active: true,
-    imagen_url: "",
-    termination_date: null,
-  
-   createdAt: new Date(),
-   updatedAt:  new Date()
-  }
+  person: PersonInputDto=defaultPersonInputDto;
   //action!: string;
   public errorDb:boolean=false;
   public msgErrorDb:string="";
@@ -117,7 +102,8 @@ export class PersonaDetailComponent implements OnInit {
       personalEmail: [data.personal_email, [Validators.required, Validators.email]],
       city: [data.city, Validators.required],
       active: [data.active, Validators.required],
-      createdDate: [data.createdAt, Validators.required],
+      createdDate: [data.createdAt,],
+      updateDate: [data.updatedAt],
       terminationDate: [data.termination_date],
     });
   }
@@ -128,51 +114,36 @@ export class PersonaDetailComponent implements OnInit {
   }
 
  
-
-  addPerson(){
-    let person = this.setPerson();
-   
-  }
-
-  putPerson(){
-    let person = this.setPerson();
-//    this.personService.putPerson(this.person.id!, person).subscribe(person => {console.info(person)});
-    this.router.navigate(['/person']);
-  }
-
-  setPerson(){
-      
-    let person:Person = new Person();
-    person.setValues(this.personDetail.value["id_persona"], this.personDetail.value["user"], this.personDetail.value["password"], 
-      this.personDetail.value["surname"], this.personDetail.value["companyEmail"], 
-      this.personDetail.value["personalEmail"], this.personDetail.value["city"],  
-      this.personDetail.value["active"], this.personDetail.value["createdDate"],
-      new Date(),
-      this.personDetail.value["terminationDate"])
-    return person;
-  }
-
-  savePerson(){
+  async savePerson(){
     console.log("Salvando persona");
-    const person=this.setPerson();
+    
+    
+    const person:PersonOutputDto={     
+      user : this.personDetail.value["user"],
+      password : this.personDetail.value["password"],
+      name: this.personDetail.value["surname"],
+      surname : this.personDetail.value["surname"],
+      company_email : this.personDetail.value["companyEmail"], 
+      personal_email : this.personDetail.value["personalEmail"],
+      city : this.personDetail.value["city"],  
+      imagen_url : '',  
+      active :   this.personDetail.value["active"], 
+      createdAt : this.personDetail.value["createdDate"],
+      updatedAt :  new Date(),
+      termination_date :    this.personDetail.value["terminationDate"]
+    }
 
-    this._personService.addPerson(person).subscribe(
-      data => {console.log("Salvado registro: "+data)  ;
-      this.router.navigate(['/person']);
-    }
-    );
-    /*
-    switch (this.action) {
-      case "edit":        
-        this.putPerson();
-        break;
-      case "add":
-        this.addPerson();
-        break;
-      default:
-        break;
-    }
-    */
+   
+    
+    var result = await this._personService.setPerson(this.idActive,person);
+    console.log(result);
+    this.router.navigate(['/person']);
+    /*.subscribe(
+      data => {
+              console.log("Salvado registro: "+data);
+              this.router.navigate(['/person']);
+              },
+      error =>{ console.log("Error al guardar persona"+error)})  ;      */
   }
   public mover(id:number,event:any)
   {    

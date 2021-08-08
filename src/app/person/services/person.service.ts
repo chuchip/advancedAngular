@@ -24,19 +24,24 @@ export class PersonService {
   }
  
  // constructor() {} 
-  addPerson(person: PersonOutputDto)
+  setPerson(idPerson:number, person: PersonOutputDto)
   {
-    //console.log(`Llamando a ${this.url} ${this.apiPerson}  Name: ${person.name}` );
-    return this._http.post<PersonInputDto>(this.url+this.apiPerson,person);
+    if (idPerson==0)
+      return this._http.put<PersonInputDto>(`${this.url}${this.apiPerson} `,person).toPromise();
+    else
+      return this._http.put<PersonInputDto>(`${this.url}${this.apiPerson}/${idPerson}`,person).toPromise();
   }
-  getAllPersons()
+  getAllPersons():Observable<any>
   {
     return this._http.get<PersonInputDto[]>(this.url+this.apiPerson);
   }
-  findById(id:number)
+  findById(id:number):Observable<PersonInputDto>
   {
     //console.log(`Buscando ID: ${id}` );
-    return this._http.get<PersonInputDto>(this.url+this.apiPerson+"/"+id+"/id");
+    return this._http.get<PersonInputDto>(`${this.url}${this.apiPerson}/${id}/id`);
   }
-  
+  deleteBy(id:number):Promise<any>
+  {
+    return this._http.delete<PersonInputDto>(`${this.url}${this.apiPerson}/${id}`).toPromise();
+  }
 }

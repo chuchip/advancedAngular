@@ -10,7 +10,8 @@
         gap: 5px;
         margin-left: 10px;
         margin-right: 10px;
-        grid-template-columns: repeat(12,minmax(100px,1fr));
+        grid-template-columns:  50px repeat(7,minmax(100px,1fr)) 80px repeat(3,minmax(100px,1fr));
+        white-space: nowrap;       
     }
     .cabecera
     {             
@@ -19,11 +20,15 @@
         text-align: center;
         margin: auto;
     }
+
     .item
-    {
-//        background: cyan;
+    {       
+        width: 95%;
+        overflow: hidden; 
+        //border: 1px dotted ;
         font-weight: normal;
         margin: auto;
+        text-overflow: ellipsis;
     }
     
 }

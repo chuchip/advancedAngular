@@ -10,7 +10,13 @@
             "reAttach": true,
             "name": "Launch Firefox",
             "url": "http://localhost:4200/index.html",
-            "webRoot": "${workspaceFolder}"
+            "webRoot": "${workspaceFolder}",
+            "pathMappings": [
+                {
+                    "url": "webpack:///src",
+                    "path": "${workspaceFolder}/src"
+                }
+            ]
         },
         {
             "name": "Launch Chrome",
@@ -18,6 +24,6 @@
             "type": "pwa-chrome",
             "url": "http://localhost:4200",
             "webRoot": "${workspaceFolder}"
-        }        
+        }
     ]
 }

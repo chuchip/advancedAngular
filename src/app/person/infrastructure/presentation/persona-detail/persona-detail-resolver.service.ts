@@ -7,8 +7,8 @@ import {
 import { Observable, of, EMPTY } from 'rxjs';
 import { mergeMap, take } from 'rxjs/operators';
 import {PersonService} from '../../../services/person.service';
-import {PersonInputDto} from '../../../dto/input/PersonInputDto'
-import {Person} from '../../../services/Person'
+import {PersonInputDto,defaultPersonInputDto} from '../../../dto/input/PersonInputDto'
+
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +20,7 @@ export class PersonaDetailResolverService {
     const id:number =+ route.paramMap.get('id')!;
     if (id==0)
     {
-      return of(new Person());
+      return of(defaultPersonInputDto);
     }
     return this.ps.findById(id).pipe(
       take(1),

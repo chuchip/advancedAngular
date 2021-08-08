@@ -10,9 +10,11 @@ import {AngularMaterialModule}  from './shared/angular-material';
 import { ReactiveFormsModule } from '@angular/forms';
 import localeEs from '@angular/common/locales/es';
 import { MAT_DATE_FORMATS } from '@angular/material/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { PersonaTableComponent } from './person/infrastructure/presentation/persona-table/persona-table.component';
 import { PersonaDetailComponent } from './person/infrastructure/presentation/persona-detail/persona-detail.component';
+import { HttpInterceptorService } from './shared/http-interceptor.service';
+import { SharedModule } from './shared/shared.module';
 
 export const DateFormat = {
   parse: {
@@ -42,9 +44,13 @@ export const DateFormat = {
     FormsModule,
     AngularMaterialModule,
     BrowserAnimationsModule,    
-    HttpClientModule
+    HttpClientModule,
+    SharedModule
   ],
-  providers: [   { provide: LOCALE_ID, useValue: 'es' }, { provide: MAT_DATE_FORMATS, useValue: DateFormat } ],
+  providers: [ 
+  
+      { provide: LOCALE_ID, useValue: 'es' }, { provide: MAT_DATE_FORMATS, useValue: DateFormat },
+     ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
